@@ -1,0 +1,15 @@
+# k3d configuration file
+apiVersion: k3d.io/v1alpha2
+kind: Simple
+name: guestbook-kubebuilder
+servers: 1
+agents: 0
+registries: # define how registries should be created or used
+  # create: true # creates a default registry to be used with the cluster; same as `--registry-create`
+  # config: k3d_registries.yaml # define contents of the `registries.yaml` file (or reference a file); same as `--registry-config /path/to/config.yaml`
+  use:
+    - k3d-myregistry.localhost:12345 # some other k3d-managed registry; same as `--registry-use 'k3d-myregistry.localhost:12345'`
+options:
+  kubeconfig:
+    updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: true)
+    switchCurrentContext: true # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)
