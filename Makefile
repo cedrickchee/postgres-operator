@@ -22,6 +22,11 @@ k3d/registry: confirm
 k8s/cluster/up: confirm, k3d/registry
 	k3d cluster create --config ./k3d_config.yaml
 
+## k8s/cluster/down: delete k8s cluster using k3d
+k8s/cluster/down:
+	k3d cluster delete pgop-cluster
+	k3d registry delete k3d-myregistry.localhost
+
 ## run/api: run the cmd/api application
 run/api:
 	# go run ./cmd/api -db-dsn=${SKEL_DB_DSN}
